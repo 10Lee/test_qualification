@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_test1/global/dimension.dart';
 import 'package:flutter_test1/pages/home/home_controller.dart';
 import 'package:flutter_test1/widgets/header1.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,10 @@ class Userpage extends StatelessWidget {
       body: Obx(
         () => GridView.builder(
           physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.all(20.0),
+          padding: EdgeInsets.symmetric(
+            vertical: Dimension.height20,
+            horizontal: Dimension.width20,
+          ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 15.0,
             crossAxisSpacing: 15.0,
@@ -41,7 +45,7 @@ class Userpage extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.black12,
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(Dimension.radius15),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black26,
@@ -54,8 +58,8 @@ class Userpage extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15.0),
-                        topRight: Radius.circular(15.0),
+                        topLeft: Radius.circular(Dimension.radius15),
+                        topRight: Radius.circular(Dimension.radius15),
                       ),
                       child: Image.network(
                         '${user.avatar}',
@@ -63,17 +67,23 @@ class Userpage extends StatelessWidget {
                         fit: BoxFit.fitWidth,
                       ),
                     ),
-                    const SizedBox(height: 20.0),
+                    SizedBox(height: Dimension.height20),
                     Container(
-                      padding: const EdgeInsets.all(10.0),
-                      height: 40.0,
+                      padding: EdgeInsets.symmetric(
+                        vertical: Dimension.height10,
+                        horizontal: Dimension.width10,
+                      ),
+                      height: Dimension.height40,
                       child: Header1(
                         text: "${user.firstName} ${user.lastName}",
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.all(10.0),
-                      height: 50.0,
+                      padding: EdgeInsets.symmetric(
+                        vertical: Dimension.height10,
+                        horizontal: Dimension.width10,
+                      ),
+                      height: Dimension.height50,
                       child: Text(
                         "Email : ${user.email}",
                       ),

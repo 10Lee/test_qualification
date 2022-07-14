@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_test1/auth/auth_controller.dart';
+import 'package:flutter_test1/global/dimension.dart';
+import 'package:flutter_test1/pages/auth/auth_controller.dart';
 import 'package:flutter_test1/globals/constant.dart';
 import 'package:flutter_test1/widgets/header1.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -28,17 +29,17 @@ class Loginpage extends StatelessWidget {
         onTap: () => FocusScope.of(context).unfocus(),
         child: ListView(
           children: [
-            const SizedBox(height: 100.0),
+            SizedBox(height: Dimension.height100),
             Center(
               child: Header1(
-                text: 'Login',
+                text: 'SIGN IN',
               ),
             ),
             Container(
-              margin:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-              width: 100.0,
-              height: 300.0,
+              margin: EdgeInsets.symmetric(
+                  horizontal: Dimension.width20, vertical: Dimension.height20),
+              width: Dimension.width100,
+              height: Dimension.height300,
               child: Form(
                 autovalidateMode: AutovalidateMode.always,
                 key: _globalKey,
@@ -46,9 +47,10 @@ class Loginpage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      height: 80.0,
+                      margin: EdgeInsets.symmetric(
+                          vertical: Dimension.height10,
+                          horizontal: Dimension.width20),
+                      height: Dimension.height80,
                       child: TextFormField(
                         decoration: InputDecoration(
                           label: Text("Email"),
@@ -64,12 +66,14 @@ class Loginpage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      height: 80.0,
+                      margin: EdgeInsets.symmetric(
+                        vertical: Dimension.height10,
+                        horizontal: Dimension.width20,
+                      ),
+                      height: Dimension.height80,
                       child: TextFormField(
                         decoration: InputDecoration(
-                          label: Text("Password"),
+                          label: const Text("Password"),
                           border: kInputBorder,
                         ),
                         validator: MultiValidator(
@@ -85,7 +89,10 @@ class Loginpage extends StatelessWidget {
                     ),
                     Obx(
                       () => Container(
-                        margin: const EdgeInsets.all(20.0),
+                        margin: EdgeInsets.symmetric(
+                          vertical: Dimension.height20,
+                          horizontal: Dimension.width20,
+                        ),
                         child: ElevatedButton(
                           onPressed: () {
                             if (_globalKey.currentState!.validate()) {
@@ -94,11 +101,12 @@ class Loginpage extends StatelessWidget {
                           },
                           child: !(controller.isLoading.value)
                               ? Center(
-                                  child: Text("Login"),
+                                  child: Text("SIGN IN"),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 50.0),
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: Dimension.width50,
+                                  ),
                                   child: LinearProgressIndicator(),
                                 ),
                         ),

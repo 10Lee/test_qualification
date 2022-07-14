@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_test1/global/dimension.dart';
 import 'package:flutter_test1/pages/detail/detail_controller.dart';
 import 'package:get/get.dart';
 
@@ -15,62 +16,65 @@ class Detailpage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Detail"),
       ),
-      body: GetBuilder<DetailController>(
-        init: DetailController(),
-        builder: (_) => controller.isLoading.value == true
-            ? Center(
+      body: Obx(
+        () => controller.isLoading == true
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const SizedBox(height: 40.0),
+                  SizedBox(height: Dimension.height40),
                   Center(
                     child: CircleAvatar(
-                      radius: 120,
+                      radius: Dimension.radius120,
                       backgroundImage: NetworkImage(
                         '${controller.detailAvatar}',
                       ),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40.0, vertical: 20.0),
-                    height: 70,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: Dimension.width40,
+                        vertical: Dimension.height20),
+                    height: Dimension.height70,
                     child: Text(
                       "${controller.detailFirstName} ${controller.detailLastName}",
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold),
+                        fontSize: Dimension.font20,
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40.0, vertical: 20.0),
-                    height: 70.0,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Dimension.width40,
+                      vertical: Dimension.height20,
+                    ),
+                    height: Dimension.height70,
                     child: Text(
-                      "Email : ${controller.detailEmail.value}",
+                      "Email : ${controller.detailEmail}",
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: Dimension.font15,
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () => controller
-                        .toggleHighlight(controller.detailIsHighlight.value),
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 40.0, vertical: 15.0),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Dimension.width40,
+                        vertical: Dimension.width15,
+                      ),
                     ),
                     child: Text(
                       "TOGGLE HIGHLIGHT",
-                      style: TextStyle(fontSize: 20.0),
+                      style: TextStyle(fontSize: Dimension.font20),
                     ),
                   ),
-                  const SizedBox(
-                    height: 40.0,
-                  ),
+                  SizedBox(height: Dimension.height40),
                 ],
               ),
       ),

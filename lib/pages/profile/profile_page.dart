@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
+import 'package:flutter_test1/global/dimension.dart';
 import 'package:get/get.dart';
 
 class Profilepage extends StatelessWidget {
@@ -17,38 +18,42 @@ class Profilepage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const SizedBox(height: 40.0),
+          SizedBox(height: Dimension.height40),
           Center(
             child: CircleAvatar(
-              radius: 120,
-              backgroundImage: NetworkImage(
-                'https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
+              radius: Dimension.radius120,
+              backgroundImage: AssetImage(
+                'assets/images/profile_doggy.jpg',
               ),
             ),
           ),
           Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-            height: 200.0,
+            padding: EdgeInsets.symmetric(
+              horizontal: Dimension.width40,
+              vertical: Dimension.height20,
+            ),
+            height: Dimension.height200,
             child: Text(
               "${lorem(paragraphs: 1, words: 40)}",
-              style: TextStyle(fontSize: 16.0),
+              style: TextStyle(fontSize: Dimension.font15),
               textAlign: TextAlign.center,
             ),
           ),
           ElevatedButton(
             onPressed: () => Get.offAllNamed('/splash'),
             style: ElevatedButton.styleFrom(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 40.0, vertical: 15.0),
+              padding: EdgeInsets.symmetric(
+                horizontal: Dimension.width40,
+                vertical: Dimension.height15,
+              ),
             ),
             child: Text(
               "SIGN OUT",
-              style: TextStyle(fontSize: 30.0),
+              style: TextStyle(fontSize: Dimension.font30),
             ),
           ),
-          const SizedBox(
-            height: 40.0,
+          SizedBox(
+            height: Dimension.height40,
           ),
         ],
       ),
