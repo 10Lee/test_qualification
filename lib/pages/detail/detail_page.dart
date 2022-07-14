@@ -29,7 +29,7 @@ class Detailpage extends StatelessWidget {
                     child: CircleAvatar(
                       radius: Dimension.radius120,
                       backgroundImage: NetworkImage(
-                        '${controller.detailAvatar}',
+                        '${controller.userDetail.value.avatar}',
                       ),
                     ),
                   ),
@@ -39,7 +39,7 @@ class Detailpage extends StatelessWidget {
                         vertical: Dimension.height20),
                     height: Dimension.height70,
                     child: Text(
-                      "${controller.detailFirstName} ${controller.detailLastName}",
+                      "${controller.userDetail.value.firstName} ${controller.userDetail.value.lastName}",
                       style: TextStyle(
                         fontSize: Dimension.font20,
                         fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class Detailpage extends StatelessWidget {
                     ),
                     height: Dimension.height70,
                     child: Text(
-                      "Email : ${controller.detailEmail}",
+                      "Email : ${controller.userDetail.value.email}",
                       style: TextStyle(
                         fontSize: Dimension.font15,
                       ),
@@ -62,7 +62,8 @@ class Detailpage extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => controller
+                        .toggleHighlight(controller.userDetail.value.id!),
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                         horizontal: Dimension.width40,

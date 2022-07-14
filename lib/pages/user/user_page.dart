@@ -25,7 +25,7 @@ class Userpage extends StatelessWidget {
             vertical: Dimension.height20,
             horizontal: Dimension.width20,
           ),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 15.0,
             crossAxisSpacing: 15.0,
             crossAxisCount: 2,
@@ -44,16 +44,19 @@ class Userpage extends StatelessWidget {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.black12,
-                  borderRadius: BorderRadius.circular(Dimension.radius15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      offset: Offset(0, 2),
-                      blurRadius: 4.0,
-                    ),
-                  ],
-                ),
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(Dimension.radius15),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(0, 2),
+                        blurRadius: 4.0,
+                      ),
+                    ],
+                    border: !user.isHighlighted
+                        ? null
+                        : Border.all(
+                            width: Dimension.width2, color: Colors.red)),
                 child: Column(
                   children: [
                     ClipRRect(

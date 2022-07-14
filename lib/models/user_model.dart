@@ -51,7 +51,7 @@ class Data {
   String? firstName;
   String? lastName;
   String? avatar;
-  bool? isHighlighted;
+  bool isHighlighted = false;
 
   Data({
     this.id,

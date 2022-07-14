@@ -11,19 +11,10 @@ import 'package:get/get.dart';
 class Loginpage extends StatelessWidget {
   GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
 
-  String validatePass(value) {
-    RegExp regex =
-        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~])$');
-    if (!regex.hasMatch(value)) {
-      return "Masukan password yang kuat";
-    } else {
-      return "";
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     AuthController controller = Get.find<AuthController>();
+
     return Scaffold(
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -42,6 +33,8 @@ class Loginpage extends StatelessWidget {
               height: Dimension.height300,
               child: Form(
                 autovalidateMode: AutovalidateMode.always,
+                onChanged: () => controller.enableBtn.value =
+                    _globalKey.currentState!.validate(),
                 key: _globalKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,13 +87,11 @@ class Loginpage extends StatelessWidget {
                           horizontal: Dimension.width20,
                         ),
                         child: ElevatedButton(
-                          onPressed: () {
-                            if (_globalKey.currentState!.validate()) {
-                              controller.redirect();
-                            }
-                          },
+                          onPressed: controller.enableBtn.value
+                              ? () => controller.redirect()
+                              : null,
                           child: !(controller.isLoading.value)
-                              ? Center(
+                              ? const Center(
                                   child: Text("SIGN IN"),
                                 )
                               : Padding(

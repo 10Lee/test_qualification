@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test1/app_router.dart';
 import 'package:flutter_test1/pages/auth/auth_binding.dart';
 import 'package:flutter_test1/pages/auth/login._page.dart';
 import 'package:flutter_test1/master_binding.dart';
@@ -31,46 +32,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      getPages: [
-        GetPage(
-          name: '/',
-          page: () => Masterpage(),
-          bindings: [
-            MasterBinding(),
-            HomeBinding(),
-            DetailBinding(),
-          ],
-        ),
-        GetPage(
-          name: '/login',
-          page: () => Loginpage(),
-          binding: AuthBinding(),
-        ),
-        GetPage(
-          name: '/splash',
-          page: () => const SplashScreen(),
-          binding: SplashBinding(),
-        ),
-        GetPage(
-          name: '/home',
-          page: () => Homepage(),
-          binding: HomeBinding(),
-        ),
-        GetPage(
-          name: '/user',
-          page: () => Userpage(),
-        ),
-        GetPage(
-          name: '/profile',
-          page: () => Profilepage(),
-        ),
-        GetPage(
-          name: '/detail',
-          page: () => const Detailpage(),
-          binding: DetailBinding(),
-        ),
-      ],
-      initialRoute: '/',
+      getPages: AppRouter().pages,
+      initialRoute: AppRouter.splash,
     );
   }
 }
